@@ -1,17 +1,25 @@
 const { Schema, model } = require('mongoose')
 
-const userSchema = new Schema(
+const productSchema = new Schema(
   {
-    username: {
+    name: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    description: {
       type: String,
       required: true,
     },
-    email: {
+    img_url: {
       type: String,
       required: true,
     },
-    password: { type: String, required: true },
-    favorite_team: {
+    owner: {
       type: String,
       enum: [
         'BARÇA',
@@ -34,11 +42,10 @@ const userSchema = new Schema(
     },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 )
 
-const User = model('User', userSchema)
+const Product = model('Product', productSchema)
 
-module.exports = User
+module.exports = Product
