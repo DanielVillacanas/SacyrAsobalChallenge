@@ -14,9 +14,6 @@ module.exports = (app) => {
         httpOnly: true,
         maxAge: 3600000,
       },
-      store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/trip-app",
-      }),
     })
   );
 };

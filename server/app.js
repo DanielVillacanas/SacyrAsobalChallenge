@@ -11,6 +11,7 @@ const app = express();
 
 require("./config")(app);
 require("./routes/index.routes")(app);
+require("./config/session.config")(app);
 require("./error-handling")(app);
 
 module.exports = app;
