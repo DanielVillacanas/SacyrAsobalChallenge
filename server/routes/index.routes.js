@@ -1,10 +1,4 @@
-const router = require("express").Router();
-
-router.get("/", (req, res, next) => {
-  res.json("All good in here");
-});
-
-// You put the next routes here 👇
-// example: router.use("/auth", authRoutes)
-
-module.exports = router;
+//Routes index that reffers to the needed routes folder
+module.exports = (app) => {
+  app.use("/auth", require("./Auth/auth"));
+};
