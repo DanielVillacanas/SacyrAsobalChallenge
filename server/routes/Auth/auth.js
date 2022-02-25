@@ -52,7 +52,6 @@ router.get("/logout", (req, res) => {
 router.get("/isloggedin", (req, res) => {
   const _id = req.session.currentUser?._id;
   User.findById(_id)
-    .populate("productsCart.product")
     .then((user) => {
       req.session.currentUser
         ? res.json(user)
