@@ -1,11 +1,88 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Asobal from "../../../Svg/Asobal.svg";
-import React from "react";
+import React, { useState } from "react";
+import AuthService from "../../../Services/AuthService/auth.service";
 
-export default function SignUp() {
+let authService = new AuthService();
+
+export default function SignUp(props) {
+  let navigate = useNavigate();
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    password2: "",
+    img_url: "",
+    username: "",
+    team: "Frigoríficos Morrazo",
+  });
+
+  const [errSingUp, setErr] = useState();
+  const [errMessage, setError] = useState(undefined);
+
+  let handleInputChange = (e) => {
+    const { name, value } = e.currentTarget;
+    if (e.currentTarget.name === "password2" && e.currentTarget.value !== "") {
+      e.currentTarget.value !== user.password
+        ? setError("Las contraseñas no coinciden")
+        : setError(undefined);
+    }
+    setUser((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  let handleInputSelect = (e) => {
+    let value = e.currentTarget.value;
+    setUser((prevState) => {
+      return {
+        ...prevState,
+        type: value,
+      };
+    });
+  };
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+    !errMessage &&
+      authService
+        .signUp(
+          user.username,
+          user.email,
+          user.password,
+          user.password2,
+          user.team
+        )
+        .then((response) => {
+          navigate("/");
+        })
+        .catch((err) => setErr(err.response?.data));
+  };
+
   return (
     <>
       <div className="min-h-full flex flex-col justify-center py-6 sm:px-6 lg:px-8">
+        {" "}
+        <Link to="/" className=" border-2 px-4 py-2 rounded-lg bg-white w-24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="m-auto h-5 w-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+        </Link>
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
             className="hidden lg:block h-24 w-auto m-auto"
@@ -16,10 +93,9 @@ export default function SignUp() {
             Registrate para unirte a la comunidad Asobal
           </h2>
         </div>
-
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
+          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 mb-4">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
@@ -32,6 +108,7 @@ export default function SignUp() {
                     id="email"
                     name="email"
                     type="email"
+                    onChange={handleInputChange}
                     autoComplete="email"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-bluesooft focus:border-bluesooft sm:text-sm"
@@ -41,16 +118,17 @@ export default function SignUp() {
 
               <div>
                 <label
-                  htmlFor="password"
+                  htmlFor="username"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Nombre de usuario
                 </label>
                 <div className="mt-1">
                   <input
-                    id="password"
-                    name="password"
-                    type="password"
+                    id="username"
+                    name="username"
+                    onChange={handleInputChange}
+                    type="text"
                     autoComplete="current-password"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-bluesooft focus:border-bluesooft sm:text-sm"
@@ -60,14 +138,15 @@ export default function SignUp() {
 
               <div>
                 <label
-                  htmlFor="type"
+                  htmlFor="team"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Equipo Favorito
                 </label>
                 <select
-                  id="type"
-                  name="type"
+                  id="team"
+                  name="team"
+                  onChange={handleInputSelect}
                   className=" border-2 border-bluesooft mt-3 block w-full pl-1 pr-10 py-2 text-base focus:outline-none focus:ring-bluesooft focus:border-bluesooft sm:text-sm rounded-md"
                   defaultValue="Frigoríficos Morrazo"
                 >
@@ -102,6 +181,7 @@ export default function SignUp() {
                     id="password"
                     name="password"
                     type="password"
+                    onChange={handleInputChange}
                     autoComplete="current-password"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-bluesooft focus:border-bluesooft sm:text-sm"
@@ -111,16 +191,17 @@ export default function SignUp() {
 
               <div>
                 <label
-                  htmlFor="password"
+                  htmlFor="password2"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Repite tu contraseña
                 </label>
                 <div className="mt-1">
                   <input
-                    id="password"
-                    name="password"
+                    id="password2"
+                    name="password2"
                     type="password"
+                    onChange={handleInputChange}
                     autoComplete="current-password"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-bluesooft focus:border-bluesooft sm:text-sm"
@@ -135,6 +216,14 @@ export default function SignUp() {
                 >
                   Registrate
                 </button>
+              </div>
+              <div>
+                {errSingUp && (
+                  <p className="text-red-500 text-center">
+                    Error al registrar usuario compruebe que la dirección es
+                    correcta y que no empieza por C/
+                  </p>
+                )}
               </div>
             </form>
 
@@ -230,6 +319,10 @@ export default function SignUp() {
             </div>
           </div>
         </div>
+        <Link to="/" className="text-white ml-96">
+          {"<"}
+          {"<"} Volver al Inicio
+        </Link>
       </div>
     </>
   );

@@ -1,27 +1,18 @@
 const { Schema, model } = require("mongoose");
 
-const productSchema = new Schema(
+const ticketSchema = new Schema(
   {
-    name: {
-      type: String,
-      unique: true,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    description: {
+    game: { type: Schema.Types.ObjectId, ref: "Game" },
+
+    email: {
       type: String,
       required: true,
     },
-    img_url: {
-      type: String,
-      required: true,
-    },
-    owner: {
+    password: { type: String, required: true },
+    favorite_team: {
       type: String,
       enum: [
+        "BARÇA",
         "BIDASOA IRUN",
         "BM. LOGROÑO LA RIOJA",
         "FRAIKIN BM. GRANOLLERS",
@@ -41,10 +32,11 @@ const productSchema = new Schema(
     },
   },
   {
+    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 );
 
-const Product = model("Product", productSchema);
+const Ticket = model("Ticket", ticketSchema);
 
-module.exports = Product;
+module.exports = Ticket;

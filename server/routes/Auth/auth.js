@@ -30,13 +30,15 @@ router.post("/login", (req, res) => {
     .then((user) => {
       if (user) {
         bcrypt.compareSync(password, user.password) //Validate password
-          ? ((req.session.currentUser = user), res.json({ user: user, type: "user" }))
+          ? ((req.session.currentUser = user),
+            res.json({ user: user, type: "user" }))
           : res.status(500).send("Error contraseña incorrecta!");
       } else {
         Seller.findOne({ email }).then((seller) => {
           seller
             ? bcrypt.compareSync(password, seller.password) //Validate password
-              ? ((req.session.currentUser = seller), res.json({ user: seller, type: "seller" }))
+              ? ((req.session.currentUser = seller),
+                res.json({ user: seller, type: "seller" }))
               : res.status(500).send("Error contraseña incorrecta!")
             : res.status(500).send("Error usuario no registrado!");
         });
@@ -46,13 +48,14 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  req.session.destroy((err) => res.status(200).json({ code: 200, message: "Logout successful" }));
+  req.session.destroy((err) =>
+    res.status(200).json({ code: 200, message: "Logout successful" })
+  );
 });
 
 router.get("/isloggedin", (req, res) => {
-  const _id = req.session.currentUser?._id;
+  const _id = req.session.currentUser._id;
   User.findById(_id)
-    .populate("productsCart.product")
     .then((user) => {
       req.session.currentUser
         ? res.json(user)
