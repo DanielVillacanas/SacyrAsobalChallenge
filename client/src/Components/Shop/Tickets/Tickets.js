@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Layout/Navbar/Navbar";
 import TicketsCard from "./TicketsCard";
 
 import TicketsService from "../../../Services/TicketsService/tickets.service";
@@ -39,7 +38,6 @@ export default function AllProducts() {
 
   return (
     <>
-      <Navbar />
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 pt-6">
         <label htmlFor="team" className="block text-sm font-medium text-white">
           Selecciona la Jornada

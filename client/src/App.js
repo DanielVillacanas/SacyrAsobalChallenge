@@ -8,17 +8,23 @@ import Merchandaising from "./Components/Shop/Merchandaising/Merchandaising";
 import MerchandaisingDetails from "./Components/Shop/Merchandaising/MerchandaisingDetails";
 import PaymentTickets from "./Components/Shop/PaymentTickets/PaymentTickets";
 import Tickets from "./Components/Shop/Tickets/Tickets";
+import Navbar from "./Components/Layout/Navbar/Navbar";
 import Calendar from "./Components/Calendar/Calendar";
+import Payment from "./Components/Shop/PaymentTickets/Payment";
 import ShoppingCart from "./Components/Shop/ShoppingCart/ShoppingCart";
 import { CartProvider } from "./Components/Context/CartContext";
-import Navbar from "./Components/Layout/Navbar/Navbar";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [countCart, setCountCart] = useState(0);
+  const [ticketsCart, setTicketsCart] = useState([]);
 
   const addProduct = (prod) => {
     setShoppingCart([...shoppingCart, prod]);
+  };
+
+  const addTicket = (ticket, count) => {
+    setTicketsCart([...ticketsCart, ticket, count]);
   };
 
   const countItems = () => setCountCart(shoppingCart.length);
@@ -29,7 +35,15 @@ function App() {
   }, [shoppingCart]);
 
   return (
-    <CartProvider value={{ addProduct, shoppingCart, setCountCart }}>
+    <CartProvider
+      value={{
+        addProduct,
+        shoppingCart,
+        setCountCart,
+        ticketsCart,
+        addTicket,
+      }}
+    >
       <Routes>
         <Route
           path="/"
@@ -104,6 +118,18 @@ function App() {
             </>
           }
         ></Route>
+        <Route path="/tickets" element={<Tickets />}></Route>
+        <Route path="/payout-tickets" element={<PaymentTickets />}></Route>
+        <Route
+          path="/payout"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <Payment />{" "}
+            </>
+          }
+        ></Route>
+        <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
       </Routes>
     </CartProvider>
   );

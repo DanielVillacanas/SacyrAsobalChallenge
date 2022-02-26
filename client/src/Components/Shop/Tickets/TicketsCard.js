@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-
-/* This example requires Tailwind CSS v2.0+ */
+import React, { useState, useContext } from "react";
+import CartContext from "../../Context/CartContext";
+import { Link } from "react-router-dom";
 
 export default function TicketCard({ ticket }) {
   const [count, setCount] = useState(1);
-  console.log(ticket);
+  const { addTicket } = useContext(CartContext);
+
   let decrement = () => {
     if (count <= 1) {
       return;
@@ -71,13 +72,13 @@ export default function TicketCard({ ticket }) {
               <span className="text-2xl font-medium">+</span>
             </button>
           </div>
-          <div className="col-span-6">
-            <button
-              type="button"
+          <div className="col-span-6" onClick={() => addTicket(ticket, count)}>
+            <Link
+              to="/payout"
               className="mt-1 px-4 inline-flex justify-center rounded-md border border-transparent shadow-sm py-2 bg-bluesooft text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft sm:text-sm"
             >
-              Añadir a la cesta
-            </button>
+              Comprar
+            </Link>
           </div>
         </li>
       </ul>
