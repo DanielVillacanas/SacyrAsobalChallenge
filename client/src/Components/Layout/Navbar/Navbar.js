@@ -80,10 +80,7 @@ export default function Navbar({ count }) {
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                <Link
-                  to="/shopping-cart"
-                  className="mr-8 top-0 inset-x-1/2 flex"
-                >
+                <Link to="/shopping-cart" className="mr-8 top-0 inset-x-1/2 flex">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -141,7 +138,7 @@ export default function Navbar({ count }) {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://cdn-icons-png.flaticon.com/512/74/74472.png"
+                        src="https://i.ibb.co/74jMCRv/profile-page-asobal.jpg"
                         alt=""
                       />
                     </Menu.Button>
@@ -244,17 +241,13 @@ export default function Navbar({ count }) {
                 <div className="flex-shrink-0">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src="https://cdn-icons-png.flaticon.com/512/74/74472.png"
+                    src="https://i.ibb.co/74jMCRv/profile-page-asobal.jpg"
                     alt=""
                   />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">
-                    Tom Cook
-                  </div>
-                  <div className="text-sm font-medium text-gray-500">
-                    tom@example.com
-                  </div>
+                  <div className="text-base font-medium text-gray-800">Tom Cook</div>
+                  <div className="text-sm font-medium text-gray-500">tom@example.com</div>
                 </div>
                 <button
                   type="button"

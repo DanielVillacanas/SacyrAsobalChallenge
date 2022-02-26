@@ -5,7 +5,7 @@ import TicketsService from "../../../Services/TicketsService/tickets.service";
 
 let service = new TicketsService();
 
-export default function AllProducts() {
+export default function Tickets() {
   let [tickets, setTickets] = useState([]);
   let [jornada, setJornada] = useState({ type: "1" });
 
