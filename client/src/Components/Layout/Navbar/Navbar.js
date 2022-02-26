@@ -80,7 +80,10 @@ export default function Navbar({ count }) {
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                <Link to="/shopping-cart" className="mr-8 top-0 inset-x-1/2 flex">
+                <Link
+                  to="/shopping-cart"
+                  className="mr-8 top-0 inset-x-1/2 flex"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -133,7 +136,7 @@ export default function Navbar({ count }) {
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
                 <Menu as="div" className="ml-3 relative">
-                  <div>
+                  <Link to="/user-profile">
                     <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       <span className="sr-only">Open user menu</span>
                       <img
@@ -142,7 +145,7 @@ export default function Navbar({ count }) {
                         alt=""
                       />
                     </Menu.Button>
-                  </div>
+                  </Link>
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-200"
@@ -246,8 +249,12 @@ export default function Navbar({ count }) {
                   />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">Tom Cook</div>
-                  <div className="text-sm font-medium text-gray-500">tom@example.com</div>
+                  <div className="text-base font-medium text-gray-800">
+                    Tom Cook
+                  </div>
+                  <div className="text-sm font-medium text-gray-500">
+                    tom@example.com
+                  </div>
                 </div>
                 <button
                   type="button"

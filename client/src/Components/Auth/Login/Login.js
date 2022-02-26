@@ -20,7 +20,7 @@ export default function Login() {
     authService
       .login(user.email, user.password)
       .then(() => {
-        navigate("/merchandaising");
+        navigate("/");
       })
       .catch((err) => console.log({ err }));
   };
@@ -71,7 +71,10 @@ export default function Login() {
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleSubmit} method="POST">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Correo electronico
                 </label>
                 <div className="mt-1">
@@ -89,7 +92,10 @@ export default function Login() {
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Contraseña
                 </label>
                 <div className="mt-1">
@@ -114,13 +120,19 @@ export default function Login() {
                     type="checkbox"
                     className="h-4 w-4 text-bluesooft focus:ring-bluesooft border-gray-300 rounded"
                   />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                  <label
+                    htmlFor="remember-me"
+                    className="ml-2 block text-sm text-gray-900"
+                  >
                     Recuerdame
                   </label>
                 </div>
 
                 <div className="text-sm">
-                  <a href="#" className="font-medium text-bluesooft hover:text-bluesooft">
+                  <a
+                    href="#"
+                    className="font-medium text-bluesooft hover:text-bluesooft"
+                  >
                     ¿Has olvidado tu contraseña?
                   </a>
                 </div>
@@ -137,7 +149,9 @@ export default function Login() {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">No tienes cuenta, registrate</span>
+                <span className="px-2 bg-white text-gray-500">
+                  No tienes cuenta, registrate
+                </span>
               </div>
             </div>
             <Link

@@ -123,7 +123,15 @@ function App() {
           }
         ></Route>
         <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
-        <Route path="/user-profile" element={<UserProfile />}></Route>
+        <Route
+          path="/user-profile"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <UserProfile />
+            </>
+          }
+        ></Route>
       </Routes>
     </CartProvider>
   );
