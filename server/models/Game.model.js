@@ -10,10 +10,12 @@ const gameSchema = new Schema(
     },
     teams: {
       home: {
-        type: String,
+        name: String,
+        img: String,
       },
       away: {
-        type: String,
+        name: String,
+        img: String,
       },
     },
     week: {

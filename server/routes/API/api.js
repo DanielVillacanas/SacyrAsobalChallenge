@@ -43,8 +43,14 @@ router.get('/games', (req, res) => {
             time: game.time,
             week: game.week,
             teams: {
-              home: TEAMS[homeName],
-              away: TEAMS[awayName],
+              home: {
+                name: TEAMS[homeName],
+                img: game.teams.home.logo,
+              },
+              away: {
+                name: TEAMS[awayName],
+                img: game.teams.away.logo,
+              },
             },
           }
           return Game.create(game_data).catch((err) => console.log(err))
