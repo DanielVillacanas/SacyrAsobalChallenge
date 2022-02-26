@@ -1,37 +1,43 @@
-import React, { useEffect, useState, useContext } from 'react'
-import ProductService from '../../../Services/MerchandaisingService/merchandaising.service'
-import { StarIcon } from '@heroicons/react/solid'
-import { Link, useParams } from 'react-router-dom'
-import CartContext from '../../Context/CartContext'
+import React, { useEffect, useState, useContext } from "react";
+import ProductService from "../../../Services/MerchandaisingService/merchandaising.service";
+import { StarIcon } from "@heroicons/react/solid";
+import { Link, useParams } from "react-router-dom";
+import CartContext from "../../Context/CartContext";
 
-let service = new ProductService()
+let service = new ProductService();
 
 export default function ProductsDetails() {
-  const { addProduct } = useContext(CartContext)
-  let [product, setProduct] = useState()
-  let [count, setCount] = useState(1)
+  const { addProduct } = useContext(CartContext);
+  let [count, setCount] = useState(1);
+  let [product, setProduct] = useState({
+    description: "",
+    img_url: "",
+    name: "",
+    owner: "",
+    price: 0,
+  });
 
-  const { id } = useParams()
+  const { id } = useParams();
 
   useEffect(() => {
-    loadProduct()
-    window.scrollTo(0, 0)
+    loadProduct();
+    window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   let loadProduct = () => {
     service.getOneProduct(id).then((result) => {
-      setProduct((product = result.data))
-    })
-  }
+      setProduct((product = result.data));
+    });
+  };
 
   let decrement = () => {
     if (count <= 1) {
-      return
+      return;
     } else {
-      setCount(count - 1)
+      setCount(count - 1);
     }
-  }
+  };
 
   return (
     <>
@@ -58,7 +64,7 @@ export default function ProductsDetails() {
                         className="text-white h-5 w-5 flex-shrink-0 mr-2"
                         aria-hidden="true"
                       />
-                    ))}{' '}
+                    ))}{" "}
                     4.7 de 5 estrellas
                   </div>
                 </div>
@@ -153,5 +159,5 @@ export default function ProductsDetails() {
         </div>
       </div>
     </>
-  )
+  );
 }
