@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose')
 
 const gameSchema = new Schema(
   {
@@ -10,18 +10,23 @@ const gameSchema = new Schema(
     },
     teams: {
       home: {
-        type: String,
+        name: String,
+        img: String,
       },
       away: {
-        type: String,
+        name: String,
+        img: String,
       },
+    },
+    week: {
+      type: String,
     },
   },
   {
     timestamps: true,
   }
-);
+)
 
-const Game = model("Game", gameSchema);
+const Game = model('Game', gameSchema)
 
-module.exports = Game;
+module.exports = Game

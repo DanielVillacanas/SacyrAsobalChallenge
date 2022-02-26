@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose')
 
 const productSchema = new Schema(
   {
@@ -22,29 +22,30 @@ const productSchema = new Schema(
     owner: {
       type: String,
       enum: [
-        "BIDASOA IRUN",
-        "BM. LOGROÑO LA RIOJA",
-        "FRAIKIN BM. GRANOLLERS",
-        "BADA HUESCA",
-        "INCARLOPSA CUENCA",
-        "ABANCA ADEMAR LEON",
-        "ANGEL XIMENEZ PUENTE GENIL",
-        "RECOLETAS AT. VALLADOLID",
-        "HELVETIA ANAITASUNA",
-        "BM. BENIDORM",
-        "VOVERPS HEROL BM. NAVA",
-        "UNICAJA BANCO SINFIN",
-        "FRIGORIFICOS MORRAZO",
-        "BATHCO BM. TORRELAVEGA",
-        "BM. IBEROQUINOA ANTEQUERA",
+        'BARCELONA',
+        'BIDASOA IRUN',
+        'BM. LOGROÑO LA RIOJA',
+        'FRAIKIN BM. GRANOLLERS',
+        'BADA HUESCA',
+        'INCARLOPSA CUENCA',
+        'ABANCA ADEMAR LEON',
+        'ANGEL XIMENEZ PUENTE GENIL',
+        'RECOLETAS AT. VALLADOLID',
+        'HELVETIA ANAITASUNA',
+        'BM. BENIDORM',
+        'VIVEROS HEROL BM. NAVA',
+        'UNICAJA BANCO SINFIN',
+        'FRIGORIFICOS MORRAZO',
+        'BATHCO BM. TORRELAVEGA',
+        'BM. IBEROQUINOA ANTEQUERA',
       ],
     },
   },
   {
     timestamps: true,
   }
-);
+)
 
-const Product = model("Product", productSchema);
+const Product = model('Product', productSchema)
 
-module.exports = Product;
+module.exports = Product
