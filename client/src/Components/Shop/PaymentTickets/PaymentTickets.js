@@ -7,9 +7,7 @@ import Modal from "../../Items/Modal/Modal";
 function PaymentTickets() {
   const { shoppingCart, setCountCart } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
-  const [total, setTotal] = useState(undefined);
-
-  const cartFilled = shoppingCart?.length !== 0;
+  const [total, setTotal] = useState(0);
 
   let changeModal = () => {
     setShowModal(true);
@@ -23,7 +21,7 @@ function PaymentTickets() {
   };
 
   useEffect(() => {
-    cartFilled && totalPrice();
+    totalPrice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shoppingCart.length]);
 
@@ -59,7 +57,7 @@ function PaymentTickets() {
                           </button>
                         </div>
                         <Link
-                          to={"/products/cart"}
+                          to={"/shopping-cart"}
                           className="font-medium text-bluesooft hover:text-bluesooft"
                         >
                           Volver a la cesta
@@ -76,11 +74,11 @@ function PaymentTickets() {
                                 elm && (
                                   <li
                                     class="py-6 flex px-4 rounded-lg my-2 "
-                                    key={elm._id}
+                                    key={elm?._id}
                                   >
                                     <div class="flex-shrink-0 w-24 h-24 rounded-md overflow-hidden border border-black">
                                       <img
-                                        src={elm.img_url}
+                                        src={elm?.img_url}
                                         alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                         class="w-full h-full object-center object-cover "
                                       />
@@ -88,11 +86,11 @@ function PaymentTickets() {
                                     <div class="ml-4 flex-1 flex flex-col">
                                       <div>
                                         <div class="flex justify-between text-base font-medium text-gray-900">
-                                          <h3>{elm.name}</h3>
+                                          <h3>{elm?.name}</h3>
                                         </div>
                                       </div>
                                       <div class="flex-1 flex items-end justify-between ">
-                                        <p class="ml-4">{elm.price}€</p>
+                                        <p class="ml-96">{elm?.price}€</p>
                                       </div>
                                     </div>
                                   </li>

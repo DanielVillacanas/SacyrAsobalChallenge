@@ -101,7 +101,7 @@ const ShoppingCart = () => {
               <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
                 <div class="flex justify-between text-base font-medium text-gray-900">
                   <p>Subtotal</p>
-                  <p>{cartFilled ? total?.price?.toFixed(2) : 0} €</p>
+                  <p>{cartFilled ? total?.price.toFixed(2) : 0} €</p>
                 </div>
                 <p class="mt-0.5 text-sm text-gray-500">
                   Gastos de envio y de gestion calculados en el coste total.
