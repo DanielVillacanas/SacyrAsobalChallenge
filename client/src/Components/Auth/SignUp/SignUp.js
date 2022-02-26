@@ -5,7 +5,7 @@ import AuthService from "../../../Services/AuthService/auth.service";
 
 let authService = new AuthService();
 
-export default function SignUp(props) {
+export default function SignUp() {
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
