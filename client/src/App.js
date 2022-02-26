@@ -10,6 +10,7 @@ import PaymentTickets from './Components/Shop/PaymentTickets/PaymentTickets'
 import Calendar from './Components/Calendar/Calendar'
 import Navbar from './Components/Layout/Navbar/Navbar'
 import ShoppingCart from './Components/Shop/ShoppingCart/ShoppingCart'
+import { ProfilePage } from './Components/ProfilePage/ProfilePage'
 import { CartProvider } from './Components/Context/CartContext'
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/tickets" element={<Login />}></Route>
         <Route path="/payout-tickets" element={<PaymentTickets />}></Route>
         <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
+        <Route path="/user-profile" element={<ProfilePage />}></Route>
       </Routes>
     </CartProvider>
   )
