@@ -9,7 +9,7 @@ class MatchService {
   }
 
   getTicketCreate = (id, quantity) =>
-    this.app.post(`/tickets/createTicket`, { id, quantity });
+    this.app.post(`/ticket/createTicket`, { id, quantity });
 }
 
 export default MatchService;

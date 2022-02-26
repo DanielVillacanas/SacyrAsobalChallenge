@@ -13,7 +13,6 @@ import Calendar from "./Components/Calendar/Calendar";
 import Payment from "./Components/Shop/PaymentTickets/Payment";
 import ShoppingCart from "./Components/Shop/ShoppingCart/ShoppingCart";
 import { CartProvider } from "./Components/Context/CartContext";
-import Navbar from "./Components/Layout/Navbar/Navbar";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -45,7 +44,6 @@ function App() {
         addTicket,
       }}
     >
-      <Navbar count={countCart} />
       <Routes>
         <Route
           path="/"
@@ -122,7 +120,15 @@ function App() {
         ></Route>
         <Route path="/tickets" element={<Tickets />}></Route>
         <Route path="/payout-tickets" element={<PaymentTickets />}></Route>
-        <Route path="/payout" element={<Payment />}></Route>
+        <Route
+          path="/payout"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <Payment />{" "}
+            </>
+          }
+        ></Route>
         <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
       </Routes>
     </CartProvider>

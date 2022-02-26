@@ -4,8 +4,9 @@ const User = require("../../models/User.model");
 const Ticket = require("../../models/Ticket.model");
 
 router.post("/createTicket", (req, res) => {
-  const { gameId, quantity } = req.body;
-  if (!gameId) throw console.error("Missing Data");
+  console.log(req.body);
+  const { id, quantity } = req.body;
+  if (!id) throw console.error("Missing Data");
 
   const ticket = {
     total: quantity * 20,
@@ -19,7 +20,7 @@ router.post("/createTicket", (req, res) => {
     return to;
   };
 
-  Game.findById(gameId).then((response) => {
+  Game.findById(id).then((response) => {
     ticket.date = dateGenerator(response.date.slice(0, 10));
     ticket.name = `${response.teams.home.name} VS ${response.teams.away.name}`;
     res.status(200).json(ticket);
