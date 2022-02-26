@@ -6,7 +6,7 @@ function ProductCard(props) {
   let product = props.product;
   return (
     <Link to={`/merchandaising/${product._id}`}>
-      <div key={product._id} className="group bg-white rounded-lg">
+      <div key={product._id} className="group bg-white rounded-lg ">
         <div className="w-full  aspect-w-1 aspect-h-1 bg-white overflow-hidden xl:aspect-w-7 xl:aspect-h-8 rounded-lg">
           <img
             src={product.img_url}

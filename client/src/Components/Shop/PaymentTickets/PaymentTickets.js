@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Navbar/Navbar";
+import Modal from "../../Items/Modal/Modal";
 
 function PaymentTickets() {
+  const [showModal, setShowModal] = useState(false);
+
+  let changeModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <>
       <Navbar />
@@ -151,13 +158,12 @@ function PaymentTickets() {
                             </div>
                           </div>
                           <div>
-                            <Link
-                              to={"/"}
-                              type="submit"
+                            <div
+                              onClick={changeModal}
                               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bluesooft hover:bg-bluesooft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft"
                             >
                               Comprar
-                            </Link>
+                            </div>
                           </div>
                         </form>
                       </div>
@@ -168,6 +174,7 @@ function PaymentTickets() {
                         tu correo y telefono.
                       </p>
                     </div>
+                    {showModal === true && <Modal />}
                   </div>
                 </div>
               </div>

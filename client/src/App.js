@@ -8,6 +8,7 @@ import Merchandaising from "./Components/Shop/Merchandaising/Merchandaising";
 import MerchandaisingDetails from "./Components/Shop/Merchandaising/MerchandaisingDetails";
 import PaymentTickets from "./Components/Shop/PaymentTickets/PaymentTickets";
 import Calendar from "./Components/Calendar/Calendar";
+import Tickets from "./Components/Shop/Tickets/Tickets";
 
 function App() {
   return (
@@ -15,13 +16,13 @@ function App() {
       <Route path="/" element={<Home />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/merchandaising" element={<Merchandaising />}></Route>
       <Route path="/calendario" element={<Calendar />}></Route>
+      <Route path="/merchandaising" element={<Merchandaising />}></Route>
       <Route
         path="/merchandaising/:id"
         element={<MerchandaisingDetails />}
       ></Route>
-      <Route path="/tickets" element={<Login />}></Route>
+      <Route path="/tickets" element={<Tickets />}></Route>
       <Route path="/payout-tickets" element={<PaymentTickets />}></Route>
     </Routes>
   );

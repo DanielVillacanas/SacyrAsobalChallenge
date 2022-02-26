@@ -42,7 +42,7 @@ export default function ProductsDetails() {
   return (
     <>
       <Navbar />
-      <div className="bg-bluecorporative">
+      <div className="bg-bluecorporative  pt-8">
         <div className="py-6">
           <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-4 lg:gap-x-8">
             <div className="lg:col-span-2 aspect-w-3 aspect-h-4 overflow-hidden lg:block rounded-lg">
@@ -75,7 +75,8 @@ export default function ProductsDetails() {
                   Precio por unidad: {product?.price} €
                 </div>
                 <div className="col-start-1 col-end-12 text-sm text-white">
-                  O tres pagos sin intereses de {product?.price / 3} €
+                  O tres pagos sin intereses de{" "}
+                  {(product?.price / 3).toFixed(2)} €
                 </div>
               </div>
               <div className="grid grid-cols-4">
