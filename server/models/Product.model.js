@@ -22,6 +22,7 @@ const productSchema = new Schema(
     owner: {
       type: String,
       enum: [
+        'ASOBAL',
         'BARCELONA',
         'BIDASOA IRUN',
         'BM. LOGROÑO LA RIOJA',
