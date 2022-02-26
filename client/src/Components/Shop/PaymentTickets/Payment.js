@@ -1,32 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../../Context/CartContext";
-import Navbar from "../../Layout/Navbar/Navbar";
 import Modal from "../../Items/Modal/Modal";
+import MatchService from "../../../Services/MatchService/match.service";
+
+let service = new MatchService();
 
 function PaymentTickets() {
-  const { shoppingCart, setCountCart } = useContext(CartContext);
+  const { ticketsCart } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
-  const [total, setTotal] = useState(undefined);
+  const [tickets, setTickets] = useState([]);
 
-  const cartFilled = shoppingCart?.length !== 0;
+  let createTicket = () => {
+    service
+      .getTicketCreate(ticketsCart[0]._id, ticketsCart[1])
+      .then((result) => {
+        console.log(result.data);
+        setTickets(result.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   let changeModal = () => {
     setShowModal(true);
   };
 
-  const totalPrice = () => {
-    let sum = shoppingCart?.reduce((sum, li) => ({
-      price: sum.price + li.price,
-    }));
-    setTotal(sum);
-  };
-
   useEffect(() => {
-    cartFilled && totalPrice();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shoppingCart.length]);
-
+    createTicket();
+  }, []);
   return (
     <>
       <div className="h-screen relative bg-bluecorporative">
@@ -58,12 +59,6 @@ function PaymentTickets() {
                             ></path>
                           </button>
                         </div>
-                        <Link
-                          to={"/products/cart"}
-                          className="font-medium text-bluesooft hover:text-bluesooft"
-                        >
-                          Volver a la cesta
-                        </Link>
                       </div>
                       <p className="flex justify-start text-gray-400 text-sm mt-4">
                         Compruebe que su pedido esta completo
@@ -71,40 +66,35 @@ function PaymentTickets() {
                       <div class="mt-8">
                         <div class="flow-root">
                           <ul class="-my-4 divide-y divide-bluesooft">
-                            {shoppingCart?.map((elm) => {
-                              return (
-                                elm && (
-                                  <li
-                                    class="py-6 flex px-4 rounded-lg my-2 "
-                                    key={elm._id}
-                                  >
-                                    <div class="flex-shrink-0 w-24 h-24 rounded-md overflow-hidden border border-black">
-                                      <img
-                                        src={elm.img_url}
-                                        alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-                                        class="w-full h-full object-center object-cover "
-                                      />
-                                    </div>
-                                    <div class="ml-4 flex-1 flex flex-col">
-                                      <div>
-                                        <div class="flex justify-between text-base font-medium text-gray-900">
-                                          <h3>{elm.name}</h3>
-                                        </div>
-                                      </div>
-                                      <div class="flex-1 flex items-end justify-between ">
-                                        <p class="ml-4">{elm.price}€</p>
-                                      </div>
-                                    </div>
-                                  </li>
-                                )
-                              );
-                            })}
+                            <li class="py-6 flex px-4 rounded-lg my-2 ">
+                              <div class="flex-shrink-0 w-24 h-24 rounded-md overflow-hidden border border-black">
+                                <img
+                                  src={tickets.logo}
+                                  alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                                  class="w-full h-full object-center object-cover "
+                                />
+                              </div>
+                              <div class="ml-4 flex-1 flex flex-col">
+                                <div>
+                                  <div class="flex justify-between text-base font-medium text-gray-900">
+                                    <h3>{tickets.name}</h3>
+                                  </div>
+                                </div>
+                                <div class="flex-1 flex items-end justify-between ">
+                                  <p>{tickets.quantity} entradas</p>
+                                  <p class="ml-4">
+                                    {" "}
+                                    <p class="ml-4">Precio entrada: 20€</p>
+                                  </p>
+                                </div>
+                              </div>
+                            </li>
                           </ul>
                         </div>
                       </div>
                       <div class="flex justify-between text-base font-medium text-gray-900 pt-8 border-t-2 border-black">
                         <p>Subtotal</p>
-                        <p>{total.price}€</p>
+                        <p>{tickets.total}€</p>
                       </div>
                     </div>
                   </div>
@@ -170,11 +160,13 @@ function PaymentTickets() {
                               />
                             </div>
                           </div>
-                          <div
-                            onClick={changeModal}
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bluesooft hover:bg-bluesooft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft"
-                          >
-                            Comprar
+                          <div>
+                            <div
+                              onClick={changeModal}
+                              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bluesooft hover:bg-bluesooft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft"
+                            >
+                              Comprar
+                            </div>
                           </div>
                         </form>
                       </div>

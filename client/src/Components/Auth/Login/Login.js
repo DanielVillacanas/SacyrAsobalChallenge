@@ -1,7 +1,41 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthService from "../../../Services/AuthService/auth.service";
 import Asobal from "../../../Svg/Asobal.svg";
 
+let authService = new AuthService();
+
 export default function Login() {
+  let navigate = useNavigate();
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const [errorLogin, setError] = useState(undefined);
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+    authService
+      .login(user.email, user.password)
+      .then(() => {
+        navigate("/merchandaising");
+      })
+      .catch((err) => console.log({ err }));
+  };
+
+  let handleInputChange = (e) => {
+    const { name, value } = e.currentTarget;
+
+    setUser((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <>
       <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -35,18 +69,17 @@ export default function Login() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md mb-4">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" onSubmit={handleSubmit} method="POST">
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                   Correo electronico
                 </label>
                 <div className="mt-1">
                   <input
                     id="email"
                     name="email"
+                    onChange={handleInputChange}
+                    value={user.email}
                     type="email"
                     autoComplete="email"
                     required
@@ -56,15 +89,14 @@ export default function Login() {
               </div>
 
               <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                   Contraseña
                 </label>
                 <div className="mt-1">
                   <input
                     id="password"
+                    onChange={handleInputChange}
+                    value={user.password}
                     name="password"
                     type="password"
                     autoComplete="current-password"
@@ -82,31 +114,22 @@ export default function Login() {
                     type="checkbox"
                     className="h-4 w-4 text-bluesooft focus:ring-bluesooft border-gray-300 rounded"
                   />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-2 block text-sm text-gray-900"
-                  >
+                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                     Recuerdame
                   </label>
                 </div>
 
                 <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-medium text-bluesooft hover:text-bluesooft"
-                  >
+                  <a href="#" className="font-medium text-bluesooft hover:text-bluesooft">
                     ¿Has olvidado tu contraseña?
                   </a>
                 </div>
               </div>
 
               <div>
-                <Link
-                  to="/signup"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bluesooft hover:bg-bluesooft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft"
-                >
+                <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bluesooft hover:bg-bluesooft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft">
                   Inicia sesión
-                </Link>
+                </button>
               </div>
             </form>
             <div className="relative mt-4">
@@ -114,9 +137,7 @@ export default function Login() {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  No tienes cuenta, registrate
-                </span>
+                <span className="px-2 bg-white text-gray-500">No tienes cuenta, registrate</span>
               </div>
             </div>
             <Link
