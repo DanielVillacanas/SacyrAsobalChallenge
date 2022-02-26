@@ -8,6 +8,7 @@ import Merchandaising from './Components/Shop/Merchandaising/Merchandaising'
 import MerchandaisingDetails from './Components/Shop/Merchandaising/MerchandaisingDetails'
 import PaymentTickets from './Components/Shop/PaymentTickets/PaymentTickets'
 import Calendar from './Components/Calendar/Calendar'
+import Navbar from './Components/Layout/Navbar/Navbar'
 import ShoppingCart from './Components/Shop/ShoppingCart/ShoppingCart'
 import { CartProvider } from './Components/Context/CartContext'
 
@@ -28,21 +29,16 @@ function App() {
 
   return (
     <CartProvider value={{ addProduct, shoppingCart, setCountCart }}>
+      <Navbar count={countCart} />
       <Routes>
-        <Route path="/" element={<Home props={{ countCart }} />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route
-          path="/merchandaising"
-          element={<Merchandaising props={{ countCart }} />}
-        ></Route>
-        <Route
-          path="/calendario"
-          element={<Calendar props={{ countCart }} />}
-        ></Route>
+        <Route path="/merchandaising" element={<Merchandaising />}></Route>
+        <Route path="/calendario" element={<Calendar />}></Route>
         <Route
           path="/merchandaising/:id"
-          element={<MerchandaisingDetails props={{ countCart }} />}
+          element={<MerchandaisingDetails />}
         ></Route>
         <Route path="/tickets" element={<Login />}></Route>
         <Route path="/payout-tickets" element={<PaymentTickets />}></Route>
