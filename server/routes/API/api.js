@@ -1,6 +1,7 @@
 const axios = require('axios')
 const router = require('express').Router()
 const API_KEY = process.env.API_KEY
+const Game = require('../../models/Game.model')
 
 const config = {
   method: 'get',
@@ -13,9 +14,23 @@ const config = {
 // Get games
 router.get('/games', (req, res) => {
   axios(config)
-    .then((data) => {
-      res.status(200).json(data.data.response)
-    })
+    .then(
+      Promise.all(function (data) {
+        data.data.response.forEach((game) => {
+          const game_data = {
+            date: game.date,
+            time: game.time,
+            week: game.week,
+            teams: {
+              home: game.teams.home.name,
+              away: game.teams.away.name,
+            },
+          }
+          return game_data
+        })
+      })
+    )
+    .then((res) => console.log(res))
     .catch((err) => console.error(err))
 })
 
