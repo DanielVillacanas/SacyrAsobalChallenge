@@ -1,22 +1,22 @@
-const axios = require('axios')
-const router = require('express').Router()
-const API_KEY = process.env.API_KEY
-const Game = require('../../models/Game.model')
+const axios = require("axios");
+const router = require("express").Router();
+const API_KEY = process.env.API_KEY;
+const Game = require("../../models/Game.model");
 
 const config = {
-  method: 'get',
-  url: 'https://api-handball.p.rapidapi.com/games?league=103&season=2021',
+  method: "get",
+  url: "https://api-handball.p.rapidapi.com/games?league=103&season=2021",
   headers: {
-    'x-rapidapi-key': API_KEY,
+    "x-rapidapi-key": API_KEY,
   },
-}
+};
 
 // Get games
-router.get('/games', (req, res) => {
+router.get("/games", (req, res) => {
   axios(config)
-    .then(
-      Promise.all(function (data) {
-        data.data.response.forEach((game) => {
+    .then((data) => {
+      Promise.all(
+        data.data.response.map((game) => {
           const game_data = {
             date: game.date,
             time: game.time,
@@ -25,13 +25,13 @@ router.get('/games', (req, res) => {
               home: game.teams.home.name,
               away: game.teams.away.name,
             },
-          }
-          return game_data
+          };
+          return Game.create(game_data).catch((err) => console.log(err));
         })
-      })
-    )
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err))
-})
+      ).then((response) => res.status(200).json({ message: "DONE" }));
+    })
 
-module.exports = router
+    .catch((err) => console.error(err));
+});
+
+module.exports = router;
