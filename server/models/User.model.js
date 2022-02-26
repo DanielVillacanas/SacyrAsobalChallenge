@@ -14,7 +14,7 @@ const userSchema = new Schema(
     favorite_team: {
       type: String,
       enum: [
-        'BARÇA',
+        'BARCELONA',
         'BIDASOA IRUN',
         'BM. LOGROÑO LA RIOJA',
         'FRAIKIN BM. GRANOLLERS',
@@ -25,7 +25,7 @@ const userSchema = new Schema(
         'RECOLETAS AT. VALLADOLID',
         'HELVETIA ANAITASUNA',
         'BM. BENIDORM',
-        'VOVERPS HEROL BM. NAVA',
+        'VIVEROS HEROL BM. NAVA',
         'UNICAJA BANCO SINFIN',
         'FRIGORIFICOS MORRAZO',
         'BATHCO BM. TORRELAVEGA',
