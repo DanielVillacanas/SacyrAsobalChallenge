@@ -11,6 +11,7 @@ import Tickets from "./Components/Shop/Tickets/Tickets";
 import Calendar from "./Components/Calendar/Calendar";
 import ShoppingCart from "./Components/Shop/ShoppingCart/ShoppingCart";
 import { CartProvider } from "./Components/Context/CartContext";
+import Navbar from "./Components/Layout/Navbar/Navbar";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -29,20 +30,80 @@ function App() {
 
   return (
     <CartProvider value={{ addProduct, shoppingCart, setCountCart }}>
-      <Navbar count={countCart} />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <Home />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/signup"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <SignUp />
+            </>
+          }
+        ></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/merchandaising" element={<Merchandaising />}></Route>
-        <Route path="/calendario" element={<Calendar />}></Route>
+        <Route
+          path="/merchandaising"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <Merchandaising />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/calendario"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <Calendar />
+            </>
+          }
+        ></Route>
         <Route
           path="/merchandaising/:id"
-          element={<MerchandaisingDetails />}
+          element={
+            <>
+              <Navbar count={countCart} />
+              <MerchandaisingDetails />
+            </>
+          }
         ></Route>
-        <Route path="/tickets" element={<Tickets />}></Route>
-        <Route path="/payout-tickets" element={<PaymentTickets />}></Route>
-        <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
+        <Route
+          path="/tickets"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <Tickets />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/payout-tickets"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <PaymentTickets />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/shopping-cart"
+          element={
+            <>
+              <Navbar count={countCart} />
+              <ShoppingCart />
+            </>
+          }
+        ></Route>
       </Routes>
     </CartProvider>
   );

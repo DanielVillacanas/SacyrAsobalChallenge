@@ -1,7 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import Navbar from "../../Layout/Navbar/Navbar";
 import Modal from "../../Items/Modal/Modal";
 
@@ -23,17 +21,11 @@ function PaymentTickets() {
                   <div class="h-full flex flex-col bg-white shadow-xl rounded-lg">
                     <div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
                       <div class="flex items-start justify-between ">
-                        <h2
-                          class="text-lg font-medium text-gray-900"
-                          id="slide-over-title"
-                        >
+                        <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">
                           Tu cesta
                         </h2>
                         <div class="ml-3 h-7 flex items-center">
-                          <button
-                            type="button"
-                            class="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                          >
+                          <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500">
                             <span class="sr-only">Cerrar panel</span>
                             <path
                               stroke-linecap="round"
@@ -44,7 +36,7 @@ function PaymentTickets() {
                           </button>
                         </div>
                         <Link
-                          to={'/products/cart'}
+                          to={"/products/cart"}
                           className="font-medium text-bluesooft hover:text-bluesooft"
                         >
                           Volver a la cesta
@@ -160,22 +152,20 @@ function PaymentTickets() {
                           </div>
                           <div>
                             <Link
-                              to={'/'}
+                              to={"/"}
                               type="submit"
-                            <div
                               onClick={changeModal}
                               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bluesooft hover:bg-bluesooft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft"
                             >
                               Comprar
-                            </div>
+                            </Link>
                           </div>
                         </form>
                       </div>
                     </div>
                     <div className="px-4 py-4 ">
                       <p className="text-xs leading-5 text-gray-500">
-                        Una vez realizada la compra, recibiras las entradas en
-                        tu correo y telefono.
+                        Una vez realizada la compra, recibiras las entradas en tu correo y telefono.
                       </p>
                     </div>
                     {showModal === true && <Modal />}
@@ -187,7 +177,7 @@ function PaymentTickets() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default PaymentTickets
+export default PaymentTickets;

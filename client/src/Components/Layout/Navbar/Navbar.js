@@ -3,27 +3,21 @@ import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, useNavigate } from "react-router-dom";
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { Link } from 'react-router-dom'
 
 import Dropdown from "../../Items/Dropdown/Dropdown";
 import AuthService from "../../../Services/AuthService/auth.service";
-import Dropdown from '../../Items/Dropdown/Dropdown'
-import ShoppingCart from '../../Shop/ShoppingCart/ShoppingCart'
+import ShoppingCart from "../../Shop/ShoppingCart/ShoppingCart";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function Navbar() {
+export default function Navbar({ count }) {
   let authService = new AuthService();
   let navigate = useNavigate();
   let [user, setUser] = useState();
 
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   useEffect(() => {
-    debugger;
     loadUser();
   }, []);
 
@@ -40,7 +34,6 @@ export default function Navbar() {
     authService.logout().then(setUser(undefined), navigate("/login"));
   };
 
-export default function Navbar({ count }) {
   return (
     <Disclosure as="nav" className="bg-gray-200 shadow">
       {({ open }) => (
@@ -86,16 +79,13 @@ export default function Navbar({ count }) {
                   >
                     Noticias
                   </Link>
-                  <Link
-                    to="/shopping-cart"
-                    className="absolute top-0 inset-x-1/2 pt-1.5"
-                  >
+                  <Link to="/shopping-cart" className="absolute top-0 inset-x-1/2 pt-1.5">
                     <p
                       style={{
-                        color: 'black',
-                        marginLeft: '2rem',
-                        height: '3px',
-                        fontWeight: 'bold',
+                        color: "black",
+                        marginLeft: "2rem",
+                        height: "3px",
+                        fontWeight: "bold",
                       }}
                     >
                       {count}
@@ -177,8 +167,8 @@ export default function Navbar({ count }) {
                           <a
                             href="#"
                             className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Tu perfil
@@ -190,8 +180,8 @@ export default function Navbar({ count }) {
                           <a
                             href="#"
                             className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Cerrar sesión
@@ -265,12 +255,8 @@ export default function Navbar({ count }) {
                   />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">
-                    Tom Cook
-                  </div>
-                  <div className="text-sm font-medium text-gray-500">
-                    tom@example.com
-                  </div>
+                  <div className="text-base font-medium text-gray-800">Tom Cook</div>
+                  <div className="text-sm font-medium text-gray-500">tom@example.com</div>
                 </div>
                 <button
                   type="button"
@@ -308,5 +294,5 @@ export default function Navbar({ count }) {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
