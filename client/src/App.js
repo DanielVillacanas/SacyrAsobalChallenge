@@ -54,15 +54,7 @@ function App() {
             </>
           }
         ></Route>
-        <Route
-          path="/signup"
-          element={
-            <>
-              <Navbar count={countCart} />
-              <SignUp />
-            </>
-          }
-        ></Route>
+        <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route
           path="/merchandaising"
