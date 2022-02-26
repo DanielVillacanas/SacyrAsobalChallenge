@@ -68,7 +68,8 @@ export default function ProductsDetails() {
                   Precio por unidad: {product?.price} €
                 </div>
                 <div className="col-start-1 col-end-12 text-sm text-white">
-                  O tres pagos sin intereses de {product?.price / 3} €
+                  O tres pagos sin intereses de{" "}
+                  {(product?.price / 3).toFixed(2)} €
                 </div>
               </div>
               <div className="grid grid-cols-4">
@@ -145,10 +146,10 @@ export default function ProductsDetails() {
             </div>
           </div>
         </div>
-        <div>
-          <div className="space-y-6 mt-8 ml-16">
-            <p className="text-base text-white ">{product?.description}</p>
-          </div>
+
+        <div className="mx-40 py-6">
+          <h4 className="text-xl text-white mb-6">Descripción</h4>
+          <p className="text-base text-white ">{product?.description}</p>
         </div>
       </div>
     </>

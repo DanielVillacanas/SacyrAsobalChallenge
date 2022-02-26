@@ -21,12 +21,12 @@ export default function Navbar({ count }) {
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block lg:hidden h-14 w-auto"
+                    className="block lg:hidden h-16 w-auto"
                     src="https://www.balonmanoproshop.com/c/271-tm_home_default/liga-asobal.jpg"
                     alt="Workflow"
                   />
                   <img
-                    className="hidden lg:block h-14 w-auto"
+                    className="hidden lg:block h-16 w-auto"
                     src="https://www.balonmanoproshop.com/c/271-tm_home_default/liga-asobal.jpg"
                     alt="Workflow"
                   />

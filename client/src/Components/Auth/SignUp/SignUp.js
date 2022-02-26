@@ -319,10 +319,6 @@ export default function SignUp() {
             </div>
           </div>
         </div>
-        <Link to="/" className="text-white ml-96">
-          {"<"}
-          {"<"} Volver al Inicio
-        </Link>
       </div>
     </>
   );
