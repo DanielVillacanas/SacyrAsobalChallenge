@@ -20,12 +20,12 @@ export default function Navbar() {
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block lg:hidden h-12 w-auto"
+                    className="block lg:hidden h-16 w-auto"
                     src="https://www.balonmanoproshop.com/c/271-tm_home_default/liga-asobal.jpg"
                     alt="Workflow"
                   />
                   <img
-                    className="hidden lg:block h-8 w-auto"
+                    className="hidden lg:block h-16 w-auto"
                     src="https://www.balonmanoproshop.com/c/271-tm_home_default/liga-asobal.jpg"
                     alt="Workflow"
                   />
@@ -181,8 +181,12 @@ export default function Navbar() {
                   />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">Tom Cook</div>
-                  <div className="text-sm font-medium text-gray-500">tom@example.com</div>
+                  <div className="text-base font-medium text-gray-800">
+                    Tom Cook
+                  </div>
+                  <div className="text-sm font-medium text-gray-500">
+                    tom@example.com
+                  </div>
                 </div>
                 <button
                   type="button"

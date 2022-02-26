@@ -153,10 +153,10 @@ export default function ProductsDetails() {
             </div>
           </div>
         </div>
-        <div>
-          <div className="space-y-6 mt-8 ml-16">
-            <p className="text-base text-white ">{product?.description}</p>
-          </div>
+
+        <div className="mx-40 py-6">
+          <h4 className="text-xl text-white mb-6">Descripción</h4>
+          <p className="text-base text-white ">{product?.description}</p>
         </div>
       </div>
     </>

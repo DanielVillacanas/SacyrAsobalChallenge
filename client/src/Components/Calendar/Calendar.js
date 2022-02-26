@@ -451,7 +451,7 @@ export default function Calendar() {
       <Navbar />
       <div className="lg:flex lg:h-full lg:flex-col p-10 mt-8">
         <header className="relative z-20 flex items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
-          <h1 className="text-lg font-semibold text-white">
+          <h1 className="text-3xl font-semibold text-white">
             <time dateTime="2022-01">Febrero 2022</time>
           </h1>
           <div className="flex items-center">
@@ -467,7 +467,7 @@ export default function Calendar() {
                 type="button"
                 className="hidden border-t border-b border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block"
               >
-                Today
+                Hoy
               </button>
               <span className="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
               <button
@@ -484,7 +484,7 @@ export default function Calendar() {
                   type="button"
                   className="flex items-center rounded-md border border-gray-300 bg-white py-2 pl-3 pr-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
                 >
-                  Month view
+                  Vista Mes
                   <ChevronDownIcon
                     className="ml-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
@@ -513,7 +513,7 @@ export default function Calendar() {
                               "block px-4 py-2 text-sm"
                             )}
                           >
-                            Day view
+                            Vista Día
                           </a>
                         )}
                       </Menu.Item>
@@ -528,7 +528,7 @@ export default function Calendar() {
                               "block px-4 py-2 text-sm"
                             )}
                           >
-                            Week view
+                            Vista Semana
                           </a>
                         )}
                       </Menu.Item>
@@ -543,7 +543,7 @@ export default function Calendar() {
                               "block px-4 py-2 text-sm"
                             )}
                           >
-                            Month view
+                            Vista Mes
                           </a>
                         )}
                       </Menu.Item>
@@ -558,7 +558,7 @@ export default function Calendar() {
                               "block px-4 py-2 text-sm"
                             )}
                           >
-                            Year view
+                            Vista Año
                           </a>
                         )}
                       </Menu.Item>
@@ -571,7 +571,7 @@ export default function Calendar() {
                 type="button"
                 className="focus:outline-none ml-6 rounded-md border border-transparent bg-bluesooft py-2 px-4 text-sm font-medium text-white shadow-sm "
               >
-                Add event
+                Añadir Evento
               </button>
             </div>
             <Menu as="div" className="relative ml-6 md:hidden">
