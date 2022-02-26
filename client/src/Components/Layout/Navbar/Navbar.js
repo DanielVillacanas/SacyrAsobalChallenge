@@ -20,13 +20,13 @@ export default function Navbar() {
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    className="block lg:hidden h-12 w-auto"
+                    src="https://www.balonmanoproshop.com/c/271-tm_home_default/liga-asobal.jpg"
                     alt="Workflow"
                   />
                   <img
                     className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                    src="https://www.balonmanoproshop.com/c/271-tm_home_default/liga-asobal.jpg"
                     alt="Workflow"
                   />
                 </div>
@@ -73,7 +73,7 @@ export default function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src="https://cdn-icons-png.flaticon.com/512/74/74472.png"
                         alt=""
                       />
                     </Menu.Button>
@@ -97,7 +97,7 @@ export default function Navbar() {
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Your Profile
+                            Tu perfil
                           </a>
                         )}
                       </Menu.Item>
@@ -110,7 +110,7 @@ export default function Navbar() {
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Sign out
+                            Cerrar sesión
                           </a>
                         )}
                       </Menu.Item>
@@ -176,17 +176,13 @@ export default function Navbar() {
                 <div className="flex-shrink-0">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="https://cdn-icons-png.flaticon.com/512/74/74472.png"
                     alt=""
                   />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">
-                    Tom Cook
-                  </div>
-                  <div className="text-sm font-medium text-gray-500">
-                    tom@example.com
-                  </div>
+                  <div className="text-base font-medium text-gray-800">Tom Cook</div>
+                  <div className="text-sm font-medium text-gray-500">tom@example.com</div>
                 </div>
                 <button
                   type="button"
@@ -202,21 +198,21 @@ export default function Navbar() {
                   href="#"
                   className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                 >
-                  Your Profile
+                  Tu perfil
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
                   href="#"
                   className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                 >
-                  Settings
+                  Ajustes
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
                   href="#"
                   className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                 >
-                  Sign out
+                  Cerrar Sesión
                 </Disclosure.Button>
               </div>
             </div>
