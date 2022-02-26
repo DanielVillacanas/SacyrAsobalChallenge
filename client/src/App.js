@@ -29,21 +29,16 @@ function App() {
 
   return (
     <CartProvider value={{ addProduct, shoppingCart, setCountCart }}>
+      <Navbar count={countCart} />
       <Routes>
-        <Route path="/" element={<Home props={{ countCart }} />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route
-          path="/merchandaising"
-          element={<Merchandaising props={{ countCart }} />}
-        ></Route>
-        <Route
-          path="/calendario"
-          element={<Calendar props={{ countCart }} />}
-        ></Route>
+        <Route path="/merchandaising" element={<Merchandaising />}></Route>
+        <Route path="/calendario" element={<Calendar />}></Route>
         <Route
           path="/merchandaising/:id"
-          element={<MerchandaisingDetails props={{ countCart }} />}
+          element={<MerchandaisingDetails />}
         ></Route>
         <Route path="/tickets" element={<Tickets />}></Route>
         <Route path="/payout-tickets" element={<PaymentTickets />}></Route>

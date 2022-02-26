@@ -1,16 +1,17 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link } from "react-router-dom";
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Link } from 'react-router-dom'
 
-import Dropdown from "../../Items/Dropdown/Dropdown";
+import Dropdown from '../../Items/Dropdown/Dropdown'
+import ShoppingCart from '../../Shop/ShoppingCart/ShoppingCart'
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+export default function Navbar({ count }) {
   return (
     <Disclosure as="nav" className="bg-gray-200 shadow">
       {({ open }) => (
@@ -56,6 +57,35 @@ export default function Navbar() {
                   >
                     Noticias
                   </Link>
+                  <Link
+                    to="/shopping-cart"
+                    className="absolute top-0 inset-x-1/2 pt-1.5"
+                  >
+                    <p
+                      style={{
+                        color: 'black',
+                        marginLeft: '2rem',
+                        height: '3px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      {count}
+                    </p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
+                    </svg>
+                  </Link>
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -93,8 +123,8 @@ export default function Navbar() {
                           <a
                             href="#"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
                             )}
                           >
                             Tu perfil
@@ -106,8 +136,8 @@ export default function Navbar() {
                           <a
                             href="#"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
                             )}
                           >
                             Cerrar sesión
@@ -224,5 +254,5 @@ export default function Navbar() {
         </>
       )}
     </Disclosure>
-  );
+  )
 }

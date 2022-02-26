@@ -1,454 +1,452 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import { Fragment } from 'react'
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   ClockIcon,
   DotsHorizontalIcon,
-} from "@heroicons/react/solid";
-import Navbar from "../Layout/Navbar/Navbar";
-import { Menu, Transition } from "@headlessui/react";
+} from '@heroicons/react/solid'
+import { Menu, Transition } from '@headlessui/react'
 
 const days = [
-  { date: "2021-01-31", events: [] },
+  { date: '2021-01-31', events: [] },
   {
-    date: "2022-02-01",
+    date: '2022-02-01',
     isCurrentMonth: true,
     events: [
       {
         id: 4,
-        name: "Visita Pabellón Municipal Guerrer@s Naveros",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Visita Pabellón Municipal Guerrer@s Naveros',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-02",
+    date: '2022-02-02',
     isCurrentMonth: true,
     events: [
       {
         id: 4,
-        name: "Conoce a Iker Serrano",
-        time: "4PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Conoce a Iker Serrano',
+        time: '4PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-02-03", isCurrentMonth: true, events: [] },
-  { date: "2022-02-04", isCurrentMonth: true, events: [] },
+  { date: '2022-02-03', isCurrentMonth: true, events: [] },
+  { date: '2022-02-04', isCurrentMonth: true, events: [] },
   {
-    date: "2022-02-05",
+    date: '2022-02-05',
     isCurrentMonth: true,
     events: [
       {
         id: 1,
-        name: "Barça - BM.Logroño La Rioja",
-        time: "12AM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Barça - BM.Logroño La Rioja',
+        time: '12AM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 2,
-        name: "Morrazo - Viveros Herol BM. Nava",
-        time: "17PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Morrazo - Viveros Herol BM. Nava',
+        time: '17PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 3,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 4,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 5,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 7,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 8,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-06",
+    date: '2022-02-06',
     isCurrentMonth: true,
     events: [
       {
         id: 6,
-        name: "Unicaja Banco - Ángel Ximénez",
-        time: "12AM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Unicaja Banco - Ángel Ximénez',
+        time: '12AM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-02-07", isCurrentMonth: true, events: [] },
+  { date: '2022-02-07', isCurrentMonth: true, events: [] },
   {
-    date: "2022-02-08",
+    date: '2022-02-08',
     isCurrentMonth: true,
     events: [
       {
         id: 9,
         name: "Visita Palau D'esports l'illa",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-02-09", isCurrentMonth: true, events: [] },
-  { date: "2022-02-10", isCurrentMonth: true, events: [] },
+  { date: '2022-02-09', isCurrentMonth: true, events: [] },
+  { date: '2022-02-10', isCurrentMonth: true, events: [] },
   {
-    date: "2022-02-11",
+    date: '2022-02-11',
     isCurrentMonth: true,
     events: [
       {
         id: 3,
-        name: "Incarlopsa Cuenca - Helvetia Anaitasuna",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Incarlopsa Cuenca - Helvetia Anaitasuna',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 4,
-        name: "BM. Logroño - BM.Iberocaja",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'BM. Logroño - BM.Iberocaja',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 5,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-12",
+    date: '2022-02-12',
     isCurrentMonth: true,
     events: [
       {
         id: 4,
-        name: "Bidasoa Irun - Morrazo",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Bidasoa Irun - Morrazo',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 5,
-        name: "Abanca Ademar - Unicaja Banco Sinfín",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Abanca Ademar - Unicaja Banco Sinfín',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-13",
+    date: '2022-02-13',
     isCurrentMonth: true,
     events: [
       {
         id: 1,
-        name: "BM. Granollers - BM. Benidorm",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'BM. Granollers - BM. Benidorm',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 2,
-        name: "Ángel Ximénez - Recoletas AT. ",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Ángel Ximénez - Recoletas AT. ',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-14",
+    date: '2022-02-14',
     isCurrentMonth: true,
     events: [
       {
         id: 1,
-        name: "Conoce a Sergio Casares",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Conoce a Sergio Casares',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-02-15", isCurrentMonth: true, events: [] },
+  { date: '2022-02-15', isCurrentMonth: true, events: [] },
   {
-    date: "2022-02-16",
+    date: '2022-02-16',
     isCurrentMonth: true,
     events: [
       {
         id: 6,
-        name: "Visita Polideportivo Huerta del Rey",
-        time: "2PM",
-        datetime: "2022-01-25T14:00",
-        href: "#",
+        name: 'Visita Polideportivo Huerta del Rey',
+        time: '2PM',
+        datetime: '2022-01-25T14:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-02-17", isCurrentMonth: true, events: [] },
+  { date: '2022-02-17', isCurrentMonth: true, events: [] },
   {
-    date: "2022-02-18",
+    date: '2022-02-18',
     isCurrentMonth: true,
     events: [
       {
         id: 1,
-        name: "Conoce a Lidio Jimenez",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Conoce a Lidio Jimenez',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-19",
+    date: '2022-02-19',
     isCurrentMonth: true,
     events: [
       {
         id: 2,
-        name: "Barça - Bidasoa Irun",
-        time: "12AM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Barça - Bidasoa Irun',
+        time: '12AM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 3,
-        name: "Morrazo - Incarlopsa Cuenca",
-        time: "17PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Morrazo - Incarlopsa Cuenca',
+        time: '17PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 4,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 5,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-20",
+    date: '2022-02-20',
     isCurrentMonth: true,
     events: [
       {
         id: 2,
-        name: "Unicaja Sinfín - BM.Logroño La Rioja",
-        time: "12AM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Unicaja Sinfín - BM.Logroño La Rioja',
+        time: '12AM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 3,
-        name: "Bada Huesca - Recoletas AT. Valladolid",
-        time: "12:15AM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Bada Huesca - Recoletas AT. Valladolid',
+        time: '12:15AM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 4,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 5,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-02-21", isCurrentMonth: true, events: [] },
+  { date: '2022-02-21', isCurrentMonth: true, events: [] },
   {
-    date: "2022-02-22",
+    date: '2022-02-22',
     isCurrentMonth: true,
     events: [
       {
         id: 1,
-        name: "Conoce a Joaquim Nazaré",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Conoce a Joaquim Nazaré',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-23",
+    date: '2022-02-23',
     isCurrentMonth: true,
     events: [
       {
         id: 1,
-        name: "Conoce a Pol Valera",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Conoce a Pol Valera',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-02-24", isCurrentMonth: true, events: [] },
+  { date: '2022-02-24', isCurrentMonth: true, events: [] },
   {
-    date: "2022-02-25",
+    date: '2022-02-25',
     isCurrentMonth: true,
     events: [
       {
         id: 2,
-        name: "Ángel Ximénex - Bada Huesca",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Ángel Ximénex - Bada Huesca',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-26",
+    date: '2022-02-26',
     isCurrentMonth: true,
     isToday: true,
     isSelected: true,
     events: [
       {
         id: 2,
-        name: "BM. Granollers - Morrazo",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'BM. Granollers - Morrazo',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 3,
-        name: "Incarlopsa Cuenca - Barça",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Incarlopsa Cuenca - Barça',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 4,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 5,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 4,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
       {
         id: 3,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
 
       {
         id: 5,
-        name: "Date night",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Date night',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-27",
+    date: '2022-02-27',
     isCurrentMonth: true,
     events: [
       {
         id: 2,
-        name: "Recoletas AT. - BM. Benidorm",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        name: 'Recoletas AT. - BM. Benidorm',
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
   {
-    date: "2022-02-28",
+    date: '2022-02-28',
     isCurrentMonth: true,
     events: [
       {
         id: 1,
         name: "Visita Palau D'esports de Granollers",
-        time: "6PM",
-        datetime: "2022-01-08T18:00",
-        href: "#",
+        time: '6PM',
+        datetime: '2022-01-08T18:00',
+        href: '#',
       },
     ],
   },
-  { date: "2022-03-1", events: [] },
-  { date: "2022-03-2", events: [] },
-  { date: "2022-03-3", events: [] },
-  { date: "2022-03-4", events: [] },
-  { date: "2022-03-5", events: [] },
-  { date: "2022-03-6", events: [] },
-  { date: "2022-03-7", events: [] },
-  { date: "2022-03-8", events: [] },
-  { date: "2022-03-9", events: [] },
-  { date: "2022-03-10", events: [] },
-  { date: "2022-03-11", events: [] },
-  { date: "2022-03-12", events: [] },
-  { date: "2022-03-13", events: [] },
-];
-const selectedDay = days.find((day) => day.isSelected);
+  { date: '2022-03-1', events: [] },
+  { date: '2022-03-2', events: [] },
+  { date: '2022-03-3', events: [] },
+  { date: '2022-03-4', events: [] },
+  { date: '2022-03-5', events: [] },
+  { date: '2022-03-6', events: [] },
+  { date: '2022-03-7', events: [] },
+  { date: '2022-03-8', events: [] },
+  { date: '2022-03-9', events: [] },
+  { date: '2022-03-10', events: [] },
+  { date: '2022-03-11', events: [] },
+  { date: '2022-03-12', events: [] },
+  { date: '2022-03-13', events: [] },
+]
+const selectedDay = days.find((day) => day.isSelected)
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ')
 }
 
 export default function Calendar() {
   return (
     <>
-      <Navbar />
       <div className="lg:flex lg:h-full lg:flex-col p-10 mt-8">
         <header className="relative z-20 flex items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
           <h1 className="text-3xl font-semibold text-white">
@@ -508,9 +506,9 @@ export default function Calendar() {
                             href="#"
                             className={classNames(
                               active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
+                                ? 'bg-gray-100 text-gray-900'
+                                : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
                             )}
                           >
                             Vista Día
@@ -523,9 +521,9 @@ export default function Calendar() {
                             href="#"
                             className={classNames(
                               active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
+                                ? 'bg-gray-100 text-gray-900'
+                                : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
                             )}
                           >
                             Vista Semana
@@ -538,9 +536,9 @@ export default function Calendar() {
                             href="#"
                             className={classNames(
                               active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
+                                ? 'bg-gray-100 text-gray-900'
+                                : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
                             )}
                           >
                             Vista Mes
@@ -553,9 +551,9 @@ export default function Calendar() {
                             href="#"
                             className={classNames(
                               active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
+                                ? 'bg-gray-100 text-gray-900'
+                                : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
                             )}
                           >
                             Vista Año
@@ -597,9 +595,9 @@ export default function Calendar() {
                           href="#"
                           className={classNames(
                             active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block px-4 py-2 text-sm"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'block px-4 py-2 text-sm'
                           )}
                         >
                           Create event
@@ -614,9 +612,9 @@ export default function Calendar() {
                           href="#"
                           className={classNames(
                             active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block px-4 py-2 text-sm"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'block px-4 py-2 text-sm'
                           )}
                         >
                           Go to today
@@ -631,9 +629,9 @@ export default function Calendar() {
                           href="#"
                           className={classNames(
                             active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block px-4 py-2 text-sm"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'block px-4 py-2 text-sm'
                           )}
                         >
                           Day view
@@ -646,9 +644,9 @@ export default function Calendar() {
                           href="#"
                           className={classNames(
                             active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block px-4 py-2 text-sm"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'block px-4 py-2 text-sm'
                           )}
                         >
                           Week view
@@ -661,9 +659,9 @@ export default function Calendar() {
                           href="#"
                           className={classNames(
                             active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block px-4 py-2 text-sm"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'block px-4 py-2 text-sm'
                           )}
                         >
                           Month view
@@ -676,9 +674,9 @@ export default function Calendar() {
                           href="#"
                           className={classNames(
                             active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block px-4 py-2 text-sm"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'block px-4 py-2 text-sm'
                           )}
                         >
                           Year view
@@ -722,20 +720,20 @@ export default function Calendar() {
                   key={day.date}
                   className={classNames(
                     day.isCurrentMonth
-                      ? "bg-white"
-                      : "bg-gray-50 text-gray-500",
-                    "relative py-2 px-3"
+                      ? 'bg-white'
+                      : 'bg-gray-50 text-gray-500',
+                    'relative py-2 px-3'
                   )}
                 >
                   <time
                     dateTime={day.date}
                     className={
                       day.isToday
-                        ? "flex h-6 w-6 items-center justify-center rounded-full bg-bluesooft font-semibold text-white"
+                        ? 'flex h-6 w-6 items-center justify-center rounded-full bg-bluesooft font-semibold text-white'
                         : undefined
                     }
                   >
-                    {day.date.split("-").pop().replace(/^0/, "")}
+                    {day.date.split('-').pop().replace(/^0/, '')}
                   </time>
                   {day.events.length > 0 && (
                     <ol className="mt-2">
@@ -770,32 +768,32 @@ export default function Calendar() {
                   key={day.date}
                   type="button"
                   className={classNames(
-                    day.isCurrentMonth ? "bg-white" : "bg-gray-50",
-                    (day.isSelected || day.isToday) && "font-semibold",
-                    day.isSelected && "text-white",
-                    !day.isSelected && day.isToday && "text-indigo-600",
+                    day.isCurrentMonth ? 'bg-white' : 'bg-gray-50',
+                    (day.isSelected || day.isToday) && 'font-semibold',
+                    day.isSelected && 'text-white',
+                    !day.isSelected && day.isToday && 'text-indigo-600',
                     !day.isSelected &&
                       day.isCurrentMonth &&
                       !day.isToday &&
-                      "text-gray-900",
+                      'text-gray-900',
                     !day.isSelected &&
                       !day.isCurrentMonth &&
                       !day.isToday &&
-                      "text-gray-500",
-                    "flex h-14 flex-col py-2 px-3 hover:bg-gray-100 focus:z-10"
+                      'text-gray-500',
+                    'flex h-14 flex-col py-2 px-3 hover:bg-gray-100 focus:z-10'
                   )}
                 >
                   <time
                     dateTime={day.date}
                     className={classNames(
                       day.isSelected &&
-                        "flex h-6 w-6 items-center justify-center rounded-full",
-                      day.isSelected && day.isToday && "bg-bluesooft",
-                      day.isSelected && !day.isToday && "bg-gray-900",
-                      "ml-auto"
+                        'flex h-6 w-6 items-center justify-center rounded-full',
+                      day.isSelected && day.isToday && 'bg-bluesooft',
+                      day.isSelected && !day.isToday && 'bg-gray-900',
+                      'ml-auto'
                     )}
                   >
-                    {day.date.split("-").pop().replace(/^0/, "")}
+                    {day.date.split('-').pop().replace(/^0/, '')}
                   </time>
                   <p className="sr-only">{day.events.length} events</p>
                   {day.events.length > 0 && (
@@ -847,5 +845,5 @@ export default function Calendar() {
         )}
       </div>
     </>
-  );
+  )
 }
