@@ -1,16 +1,39 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Dropdown from "../../Items/Dropdown/Dropdown";
+import AuthService from "../../../Services/AuthService/auth.service";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
+  let authService = new AuthService();
+  let navigate = useNavigate();
+  let [user, setUser] = useState();
+
+  useEffect(() => {
+    debugger;
+    loadUser();
+  }, []);
+
+  const loadUser = () => {
+    debugger;
+    authService
+      .isloggedin()
+      .then((user) => {
+        setUser(user);
+      })
+      .catch((err) => console.log(err));
+  };
+  const closeSession = () => {
+    authService.logout().then(setUser(undefined), navigate("/login"));
+  };
+
   return (
     <Disclosure as="nav" className="bg-gray-200 shadow">
       {({ open }) => (
@@ -59,6 +82,32 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
+                {!user ? (
+                  <>
+                    <Link
+                      to="/login"
+                      className="border-transparent text-gray-500  hover:text-bluesooft inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium mr-6"
+                    >
+                      Inicio de sesión
+                    </Link>
+                    <Link
+                      to="/signup "
+                      className="border-transparent text-gray-500  hover:text-bluesooft inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium mr-6"
+                    >
+                      Regístrate
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={closeSession}
+                      className="border-transparent text-gray-500  hover:text-bluesooft inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium mr-6"
+                    >
+                      Cerrar Sesión
+                    </button>
+                  </>
+                )}
+
                 <button
                   type="button"
                   className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -66,7 +115,6 @@ export default function Navbar() {
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-
                 <Menu as="div" className="ml-3 relative">
                   <div>
                     <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
