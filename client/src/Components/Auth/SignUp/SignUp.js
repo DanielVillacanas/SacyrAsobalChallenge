@@ -83,9 +83,9 @@ export default function SignUp() {
             />
           </svg>
         </Link>
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md ">
           <img
-            className="hidden lg:block h-24 w-auto m-auto"
+            className="hidden lg:block h-48 w-auto m-auto shadow-md shadow-white rounded-full"
             src={Asobal}
             alt="Workflow"
           />
