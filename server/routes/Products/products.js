@@ -4,7 +4,7 @@ const router = require("express").Router();
 router.get("/", (req, res) => {
   const team = req.query.team;
   if (!team) {
-    Product.find({ owner: 1, price: 1, img_url: 1, name: 1 })
+    Product.find()
       .then((products) =>
         products.length < 1
           ? res.status(404).json({ message: "No products" })
@@ -27,6 +27,16 @@ router.get("/", (req, res) => {
         res.status(400).json({ message: "Error retrieving products", err })
       );
   }
+});
+
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  Product.findById(id)
+    .then((product) => {
+      res.status(200).json(product);
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

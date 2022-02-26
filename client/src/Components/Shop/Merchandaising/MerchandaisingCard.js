@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { StarIcon } from "@heroicons/react/solid";
 
 function ProductCard(props) {
   let product = props.product;
   return (
-    <div>
+    <Link to={`/merchandaising/${product._id}`}>
       <div key={product._id} className="group bg-white rounded-lg">
         <div className="w-full  aspect-w-1 aspect-h-1 bg-white overflow-hidden xl:aspect-w-7 xl:aspect-h-8 rounded-lg">
           <img
@@ -13,27 +14,24 @@ function ProductCard(props) {
             alt="Product Img"
           />
         </div>
-        <div className="pl-8 pb-4 bg-gray-50 rounded-lg">
-          <h4 className="pt-4 pr-2 mb-6 text-sm text-black h-10">
-            {product.owner}
-          </h4>
-          <h3 className="pt-4 pr-2 mb-6 text-sm text-black h-10">
-            {product.name}
-          </h3>
-          <p className="mt-1 text-lg font-medium text-gray-900">
+        <div className="pl-8 pb-4 bg-white rounded-lg">
+          <h4 className="pr-2 pt-2 text-sm text-black">{product.owner}</h4>
+          <h3 className="pr-2 pt-2 text-sm text-black">{product.name}</h3>
+          <div className="flex items-center mt-2 mr-2">
+            {[0, 1, 2, 3, 4].map((rating) => (
+              <StarIcon
+                key={rating}
+                className="text-black h-5 w-5 flex-shrink-0 "
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+          <p className="text-lg pt-2 font-medium text-gray-900">
             {product.price} €
           </p>
-          <Link to={`/products/${product._id}`}>
-            <button
-              type="button"
-              className="mt-4 shadow-sm text-sm font-medium text-black  border-b-2 border-green-500 transition duration-500 ease-in-out transform hover:scale-90 hover:translate-y-1"
-            >
-              Detalles de producto
-            </button>
-          </Link>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 export default ProductCard;

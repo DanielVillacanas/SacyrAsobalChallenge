@@ -10,7 +10,7 @@ function classNames(...classes) {
 export default function Dropdown() {
   return (
     <Menu as="div" className="relative inline-block text-left pt-5 ">
-      <Menu.Button className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1  border-b-2 text-sm font-medium pb-5">
+      <Menu.Button className="border-transparent text-gray-500  hover:text-bluesooft inline-flex items-center px-1  border-b-2 text-sm font-medium pb-4">
         Tienda
       </Menu.Button>
 
