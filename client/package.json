@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.0",
     "craco": "^0.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "deploy": "rm -rf build/*; npm run build; cd ..; rm -rf server/public/*; mv client/build/* server/public; git add .; git commit -m deploy; git subtree push --prefix server heroku main",
-    "start": "REACT_APP_BASE_URL=http://localhost:5005/api react-scripts start",
+    "start": "REACT_APP_BASE_URL=http://localhost:5005 react-scripts start",
     "build": "REACT_APP_BASE_URL=https://soamee-books.herokuapp.com/api react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

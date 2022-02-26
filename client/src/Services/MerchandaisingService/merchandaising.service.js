@@ -3,7 +3,7 @@ import axios from "axios";
 class ProductService {
   constructor() {
     this.app = axios.create({
-      baseURL: `${process.env.REACT_APP_BASE_URL}/allProducts`,
+      baseURL: `${process.env.REACT_APP_BASE_URL}`,
       withCredentials: true,
     });
   }
