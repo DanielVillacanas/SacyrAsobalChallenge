@@ -1,13 +1,31 @@
 import { Link } from "react-router-dom";
+import Asobal from "../../../Svg/Asobal.svg";
 
 export default function Login() {
   return (
     <>
       <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <Link to="/" className=" border-2 px-4 py-2 rounded-lg bg-white w-24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="m-auto h-5 w-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+        </Link>
+
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
-            className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+            className="hidden lg:block h-24 w-auto m-auto"
+            src={Asobal}
             alt="Workflow"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
@@ -15,7 +33,7 @@ export default function Login() {
           </h2>
         </div>
 
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md mb-4">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" action="#" method="POST">
               <div>

@@ -14,6 +14,9 @@ function ProductCard(props) {
           />
         </div>
         <div className="pl-8 pb-4 bg-gray-50 rounded-lg">
+          <h4 className="pt-4 pr-2 mb-6 text-sm text-black h-10">
+            {product.owner}
+          </h4>
           <h3 className="pt-4 pr-2 mb-6 text-sm text-black h-10">
             {product.name}
           </h3>
