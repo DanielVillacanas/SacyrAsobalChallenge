@@ -1,47 +1,40 @@
-import React, { useEffect, useState } from "react";
-import ProductService from "../../../Services/MerchandaisingService/merchandaising.service";
-import { StarIcon } from "@heroicons/react/solid";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Navbar from "../../Layout/Navbar/Navbar";
+import React, { useEffect, useState, useContext } from 'react'
+import ProductService from '../../../Services/MerchandaisingService/merchandaising.service'
+import { StarIcon } from '@heroicons/react/solid'
+import { Link, useParams } from 'react-router-dom'
+import CartContext from '../../Context/CartContext'
 
-let service = new ProductService();
+let service = new ProductService()
 
 export default function ProductsDetails() {
-  let navigate = useNavigate();
+  const { addProduct } = useContext(CartContext)
+  let [product, setProduct] = useState()
+  let [count, setCount] = useState(1)
 
-  let [product, setProduct] = useState();
-  let [count, setCount] = useState(1);
-
-  const { id } = useParams();
+  const { id } = useParams()
 
   useEffect(() => {
-    loadProduct();
-    window.scrollTo(0, 0);
-  }, []);
+    loadProduct()
+    window.scrollTo(0, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   let loadProduct = () => {
     service.getOneProduct(id).then((result) => {
-      setProduct((product = result.data));
-    });
-  };
-
-  let addProductCart = () => {
-    service.addProductCart(product._id, count).then(() => {
-      navigate("/products/cart");
-    });
-  };
+      setProduct((product = result.data))
+    })
+  }
 
   let decrement = () => {
     if (count <= 1) {
-      return;
+      return
     } else {
-      setCount(count - 1);
+      setCount(count - 1)
     }
-  };
+  }
 
   return (
     <>
-      <Navbar />
       <div className="bg-bluecorporative">
         <div className="py-6">
           <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-4 lg:gap-x-8">
@@ -65,7 +58,7 @@ export default function ProductsDetails() {
                         className="text-white h-5 w-5 flex-shrink-0 mr-2"
                         aria-hidden="true"
                       />
-                    ))}{" "}
+                    ))}{' '}
                     4.7 de 5 estrellas
                   </div>
                 </div>
@@ -75,7 +68,8 @@ export default function ProductsDetails() {
                   Precio por unidad: {product?.price} €
                 </div>
                 <div className="col-start-1 col-end-12 text-sm text-white">
-                  O tres pagos sin intereses de {product?.price / 3} €
+                  O tres pagos sin intereses de{" "}
+                  {(product?.price / 3).toFixed(2)} €
                 </div>
               </div>
               <div className="grid grid-cols-4">
@@ -143,7 +137,7 @@ export default function ProductsDetails() {
               <div className="grid grid-cols-6 pb-8">
                 <button
                   type="button"
-                  onClick={addProductCart}
+                  onClick={() => addProduct(product)}
                   className="col-span-3 inline-flex justify-center rounded-md border border-transparent shadow-sm py-2 bg-bluesooft text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft sm:text-sm"
                 >
                   Añadir a la cesta
@@ -152,12 +146,12 @@ export default function ProductsDetails() {
             </div>
           </div>
         </div>
-        <div>
-          <div className="space-y-6 mt-8 ml-16">
-            <p className="text-base text-white ">{product?.description}</p>
-          </div>
+
+        <div className="mx-40 py-6">
+          <h4 className="text-xl text-white mb-6">Descripción</h4>
+          <p className="text-base text-white ">{product?.description}</p>
         </div>
       </div>
     </>
-  );
+  )
 }

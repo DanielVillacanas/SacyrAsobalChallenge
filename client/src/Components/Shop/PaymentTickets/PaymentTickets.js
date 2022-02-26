@@ -1,11 +1,19 @@
-import React from "react";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Navbar/Navbar";
+import Modal from "../../Items/Modal/Modal";
 
 function PaymentTickets() {
+  const [showModal, setShowModal] = useState(false);
+
+  let changeModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <>
-      <Navbar />
       <div className="h-screen relative bg-bluecorporative">
         <div className="relative pt-6 pb-10 sm:pb-8 bg-bluecorporative lg:pt-28">
           <div className="mt-12 sm:mt-4 bg-bluecorporative">
@@ -36,7 +44,7 @@ function PaymentTickets() {
                           </button>
                         </div>
                         <Link
-                          to={"/products/cart"}
+                          to={'/products/cart'}
                           className="font-medium text-bluesooft hover:text-bluesooft"
                         >
                           Volver a la cesta
@@ -152,12 +160,14 @@ function PaymentTickets() {
                           </div>
                           <div>
                             <Link
-                              to={"/"}
+                              to={'/'}
                               type="submit"
+                            <div
+                              onClick={changeModal}
                               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bluesooft hover:bg-bluesooft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bluesooft"
                             >
                               Comprar
-                            </Link>
+                            </div>
                           </div>
                         </form>
                       </div>
@@ -168,6 +178,7 @@ function PaymentTickets() {
                         tu correo y telefono.
                       </p>
                     </div>
+                    {showModal === true && <Modal />}
                   </div>
                 </div>
               </div>
@@ -176,7 +187,7 @@ function PaymentTickets() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default PaymentTickets;
+export default PaymentTickets
